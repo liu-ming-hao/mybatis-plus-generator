@@ -3,7 +3,7 @@ package com.zhengqing.aigou;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.zhengqing.aigou.domain.User;
+import com.zhengqing.aigou.model.User;
 import com.zhengqing.aigou.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
