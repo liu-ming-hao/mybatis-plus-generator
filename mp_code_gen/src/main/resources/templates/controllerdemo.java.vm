@@ -1,0 +1,70 @@
+package ${package.Controller};
+
+import ${package.Entity}.${entity};//dao
+import ${package.Service}.${table.serviceName};//service
+import ${package.ServiceImpl}.${table.serviceImplName};//impl
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.RestController;
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+
+import java.util.List;
+
+/**
+ * <p>
+ * $!{table.comment} 前端控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${restControllerStyle})
+@RestController
+#else
+@Controller
+#end
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+#if(${kotlin})
+class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
+
+#else
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} {
+#end
+    @Autowired
+    private ${table.serviceName} thisService;
+
+    @PostMapping("/findList")
+    public List<${entity}> findList(@RequestBody ${entity} reqModel){
+        List<${entity}> listRes = thisService.findList(reqModel);
+        return orderHolderList;
+    }
+    @PostMapping("/insert")
+    public void insert(@RequestBody ${entity} reqModel){
+        thisService.insert(reqModel);
+    }
+    @PostMapping("/updateById")
+    public void updateById(@RequestBody ${entity} reqModel){
+        thisService.updateById(reqModel);
+    }
+    @PostMapping("/deleteById")
+    public void deleteById(@RequestParam("id") String id){
+        thisService.deleteById(id);
+    }
+    @GetMapping("/getById")
+    public ${entity} getById(@RequestParam("id") String id){
+        return thisService.getById(id);
+    }
+}
+
+#end

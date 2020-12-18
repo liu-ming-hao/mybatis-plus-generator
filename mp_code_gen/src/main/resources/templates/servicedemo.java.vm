@@ -1,0 +1,26 @@
+package ${package.Service};
+
+import ${package.Entity}.${entity};
+import ${superServiceClassPackage};
+
+import java.util.List;
+
+/**
+ * <p>
+ * $!{table.comment} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${kotlin})
+interface ${table.serviceName} : ${superServiceClass}<${entity}>
+#else
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+    public List<${entity}> findList(${entity} reqModel);
+    public void insert(${entity} reqModel);
+    public boolean updateById(${entity} reqModel);
+    public void deleteById(String id);
+    public ${entity} getById(String id);
+}
+#end

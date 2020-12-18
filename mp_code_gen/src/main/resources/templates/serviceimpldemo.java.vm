@@ -1,0 +1,53 @@
+package ${package.ServiceImpl};
+
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${superServiceImplClassPackage};
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+#if(${kotlin})
+open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>(), ${table.serviceName} {
+
+}
+#else
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+    @Autowired
+    ${table.mapperName}  thisMapper;
+    @Override
+    public List<${entity}> findList(${entity} reqModel){
+        List<${entity}> listRes = thisMapper.findList(reqModel);
+        return listRes;
+    }
+    @Override
+    public void insert(${entity} reqModel){
+        thisMapper.insert(reqModel);
+    }
+    @Override
+    public boolean updateById(${entity} reqModel){
+        int updateRes = thisMapper.updateById(reqModel);
+        return true;
+    }
+    @Override
+    public void deleteById(String id){
+        thisMapper.deleteById(id);
+    }
+    @Override
+    public ${entity} getById(String id) {
+        ${entity} getByIdRes = thisMapper.selectById(id);
+        return getByIdRes;
+    }
+}
+#end
