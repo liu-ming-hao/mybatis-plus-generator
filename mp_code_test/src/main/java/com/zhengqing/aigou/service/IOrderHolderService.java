@@ -14,7 +14,9 @@ import java.util.List;
  * @since 2020-12-18
  */
 public interface IOrderHolderService extends IService<OrderHolder>{
-
     public List<OrderHolder> findList(OrderHolder orderHolder);
-
+    public void insert(OrderHolder orderHolder);
+    public boolean updateById(OrderHolder orderHolder);
+    public void deleteById(String id);
+    public OrderHolder getById(String id);
 }

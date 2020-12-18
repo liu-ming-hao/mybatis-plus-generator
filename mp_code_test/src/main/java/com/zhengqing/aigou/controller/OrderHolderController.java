@@ -5,9 +5,7 @@ import com.zhengqing.aigou.model.OrderHolder;
 import com.zhengqing.aigou.service.IOrderHolderService;
 import com.zhengqing.aigou.service.impl.OrderHolderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
@@ -32,6 +30,21 @@ public class OrderHolderController {
         List<OrderHolder> orderHolderList = orderHolderService.findList(orderHolder);
         return orderHolderList;
     }
-
+    @PostMapping("/insert")
+    public void insert(@RequestBody OrderHolder orderHolder){
+        orderHolderService.insert(orderHolder);
+    }
+    @PostMapping("/updateById")
+    public void updateById(@RequestBody OrderHolder orderHolder){
+        orderHolderService.updateById(orderHolder);
+    }
+    @PostMapping("/deleteById")
+    public void deleteById(@RequestParam("id") String id){
+        orderHolderService.deleteById(id);
+    }
+    @GetMapping("/getById")
+    public OrderHolder getById(@RequestParam("id") String id){
+        return orderHolderService.getById(id);
+    }
 }
 
