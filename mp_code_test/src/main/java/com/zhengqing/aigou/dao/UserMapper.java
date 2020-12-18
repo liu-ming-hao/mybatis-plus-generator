@@ -1,7 +1,8 @@
 package com.zhengqing.aigou.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zhengqing.aigou.model.User;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+
 
 /**
  * <p>

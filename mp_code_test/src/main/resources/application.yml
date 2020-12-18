@@ -7,5 +7,5 @@ spring:
     username: m_order
     password: 123456
 mybatis-plus:
-  mapper-locations: classpath:com/zhengqing/aigou/mapper/*Mapper.xml
-  type-aliases-package: com.zhengqing.aigou.domain,com.zhengqing.aigou.query
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.zhengqing.aigou.model

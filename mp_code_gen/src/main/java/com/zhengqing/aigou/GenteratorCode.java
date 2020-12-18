@@ -1,11 +1,12 @@
 package com.zhengqing.aigou;
 
+
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
-import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 import java.util.*;
@@ -19,7 +20,7 @@ public class GenteratorCode {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         gc.setOutputDir(rb.getString("OutputDir"));
-        gc.setFileOverride(true);
+        gc.setFileOverride(true);//覆盖相同文件
         gc.setActiveRecord(true);// 开启 activeRecord 模式
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
@@ -47,8 +48,8 @@ public class GenteratorCode {
         pc.setController("controller");
         pc.setService("service");
         pc.setServiceImpl("service.impl");
-        pc.setEntity("domain");
-        pc.setMapper("mapper");
+        pc.setEntity("model");
+        pc.setMapper("dao");
         mpg.setPackageInfo(pc);
 
         // 注入自定义配置，可以在 VM 中使用 cfg.abc 【可无】
@@ -67,17 +68,25 @@ public class GenteratorCode {
         focList.add(new FileOutConfig("/templates/entity.java.vm") {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                return rb.getString("OutputDirBase")+ "/com/zhengqing/aigou/domain/" + tableInfo.getEntityName() + ".java";
+                return rb.getString("OutputDirBase")+ "/com/zhengqing/aigou/model/" + tableInfo.getEntityName() + ".java";
             }
         });
+        // 调整 dao 生成目录演示
+        /*focList.add(new FileOutConfig("/templates/mapper.java.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return rb.getString("OutputDirBase")+ "/com/zhengqing/aigou/dao/" + tableInfo.getEntityName() + "Dao.java";
+            }
+        });*/
 
         // 调整 xml 生成目录演示
         focList.add(new FileOutConfig("/templates/mapper.xml.vm") {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                return rb.getString("OutputDirXml")+ "/com/zhengqing/aigou/mapper/" + tableInfo.getEntityName() + "Mapper.xml";
+                return rb.getString("OutputDirXml")+ "/mapper/" + tableInfo.getEntityName() + "Mapper.xml";
             }
         });
+
         cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
 
@@ -87,8 +96,8 @@ public class GenteratorCode {
         tc.setService("/templates/service.java.vm");
         tc.setServiceImpl("/templates/serviceImpl.java.vm");
         tc.setEntity(null);
-        tc.setMapper("/templates/mapper.java.vm");
-        tc.setController(null);
+        tc.setMapper("/templates/mapper.java.vm"); // "/templates/mapper.java.vm"
+        tc.setController("/templates/controller.java.vm");
         tc.setXml(null);
         // 如上任何一个模块如果设置 空 OR Null 将不生成该模块。
         mpg.setTemplate(tc);

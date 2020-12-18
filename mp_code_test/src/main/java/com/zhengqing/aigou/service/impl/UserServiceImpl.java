@@ -1,9 +1,10 @@
 package com.zhengqing.aigou.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zhengqing.aigou.model.User;
 import com.zhengqing.aigou.dao.UserMapper;
 import com.zhengqing.aigou.service.IUserService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+
 import org.springframework.stereotype.Service;
 
 /**
