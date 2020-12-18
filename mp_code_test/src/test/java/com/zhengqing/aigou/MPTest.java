@@ -57,11 +57,11 @@ public class MPTest {
 
     @Test //高级查询
     public void testQueryAndPage() throws Exception {
-        Page<User> page = new Page<>(1, 10); //参数1：当前页  参数2：每页显示多少条数据
+        /*Page<User> page = new Page<>(1, 10); //参数1：当前页  参数2：每页显示多少条数据
         Wrapper wrapper = new EntityWrapper();
         wrapper.like("name", "z");
         userService.selectPage(page, wrapper);
         System.out.println("总数:" + page.getTotal());
-        System.out.println(page.getRecords());
+        System.out.println(page.getRecords());*/
     }
 }
