@@ -1,6 +1,6 @@
 package com.zhengqing.aigou.service;
 
-import com.zhengqing.aigou.domain.User;
+import com.zhengqing.aigou.model.User;
 import com.baomidou.mybatisplus.service.IService;
 
 /**

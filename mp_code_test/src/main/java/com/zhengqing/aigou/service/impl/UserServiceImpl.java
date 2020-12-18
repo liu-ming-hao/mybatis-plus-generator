@@ -1,7 +1,7 @@
 package com.zhengqing.aigou.service.impl;
 
-import com.zhengqing.aigou.domain.User;
-import com.zhengqing.aigou.mapper.UserMapper;
+import com.zhengqing.aigou.model.User;
+import com.zhengqing.aigou.dao.UserMapper;
 import com.zhengqing.aigou.service.IUserService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

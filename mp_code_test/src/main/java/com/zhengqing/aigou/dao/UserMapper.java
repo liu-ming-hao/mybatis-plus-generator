@@ -1,6 +1,6 @@
-package com.zhengqing.aigou.mapper;
+package com.zhengqing.aigou.dao;
 
-import com.zhengqing.aigou.domain.User;
+import com.zhengqing.aigou.model.User;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

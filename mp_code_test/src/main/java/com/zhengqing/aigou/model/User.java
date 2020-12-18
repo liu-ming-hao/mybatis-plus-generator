@@ -1,4 +1,4 @@
-package com.zhengqing.aigou.domain;
+package com.zhengqing.aigou.model;
 
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
