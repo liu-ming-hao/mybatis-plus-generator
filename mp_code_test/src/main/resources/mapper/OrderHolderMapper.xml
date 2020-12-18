@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhengqing.aigou.dao.OrderHolderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhengqing.aigou.model.OrderHolder">
+        <id column="ID" property="id" />
+        <result column="NAME" property="name" />
+        <result column="SEX" property="sex" />
+        <result column="ID_TYPE" property="idType" />
+        <result column="ID_CARD" property="idCard" />
+        <result column="PHONE" property="phone" />
+        <result column="BIRTHDAY" property="birthday" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="UPDATE_TIME" property="updateTime" />
+        <result column="DELETE_FLAG" property="deleteFlag" />
+        <result column="VERSION" property="version" />
+        <result column="ID_EXP_DATE" property="idExpDate" />
+        <result column="EMAIL" property="email" />
+        <result column="ADDRESS" property="address" />
+        <result column="PROVINCE_CODE" property="provinceCode" />
+        <result column="PROVINCE_NAME" property="provinceName" />
+        <result column="CITY_CODE" property="cityCode" />
+        <result column="CITY_NAME" property="cityName" />
+        <result column="REGION_CODE" property="regionCode" />
+        <result column="REGION_NAME" property="regionName" />
+        <result column="JOB_CODE" property="jobCode" />
+        <result column="JOB_NAME" property="jobName" />
+        <result column="ID_TYPE_NAME" property="idTypeName" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+          ID
+        ,NAME
+        ,SEX
+        ,ID_TYPE
+        ,ID_TYPE_NAME
+        ,ID_CARD
+        ,PHONE
+        ,ADDRESS
+        ,EMAIL
+        ,ID_EXP_DATE
+        ,BIRTHDAY
+        ,CREATE_TIME
+        ,UPDATE_TIME
+        ,DELETE_FLAG
+        ,VERSION
+        ,PROVINCE_CODE
+        ,PROVINCE_NAME
+        ,REGION_CODE
+        ,REGION_NAME
+        ,CITY_CODE
+        ,CITY_NAME
+        ,JOB_CODE
+        ,JOB_NAME
+  </sql>
+
+    <sql id="dynamicWhere">
+        <where>
+            <if test="id!=null and id!=''"> AND ID = #{id} </if>
+            <if test="name!=null and name!=''"> AND NAME = #{name} </if>
+            <if test="sex!=null"> AND SEX = #{sex} </if>
+            <if test="idType!=null"> AND ID_TYPE = #{idType} </if>
+            <if test="idCard!=null and idCard!=''"> AND ID_CARD = #{idCard} </if>
+            <if test="phone!=null and phone!=''"> AND PHONE = #{phone} </if>
+            <if test="address!=null and address!=''"> AND ADDRESS = #{address} </if>
+            <if test="email!=null and email!=''"> AND EMAIL = #{email} </if>
+            <if test="idExpDate!=null"> AND ID_EXP_DATE = #{idExpDate} </if>
+            <if test="birthday!=null"> AND BIRTHDAY  = #{birthday} </if>
+            <if test="createTime!=null"> AND CREATE_TIME  = #{createTime} </if>
+            <if test="updateTime!=null"> AND UPDATE_TIME  = #{updateTime} </if>
+            <if test="deleteFlag!=null"> AND DELETE_FLAG = #{deleteFlag} </if>
+            <if test="version!=null"> AND VERSION = #{version} </if>
+            <if test="provinceCode!=null"> AND PROVINCE_CODE = #{provinceCode} </if>
+            <if test="provinceName!=null"> AND PROVINCE_NAME = #{provinceName} </if>
+            <if test="cityCode!=null"> AND CITY_CODE = #{cityCode} </if>
+            <if test="cityName!=null"> AND CITY_NAME = #{cityName} </if>
+            <if test="regionCode!=null"> AND REGION_CODE = #{regionCode} </if>
+            <if test="regionName!=null"> AND REGION_NAME = #{regionName} </if>
+            <if test="jobCode!=null"> AND JOB_CODE = #{jobCode} </if>
+            <if test="jobName!=null"> AND JOB_NAME = #{jobName} </if>
+        </where>
+    </sql>
+
+    <select id="findList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM ORDER_HOLDER
+        <include refid="dynamicWhere" />
+    </select>
+
+</mapper>
