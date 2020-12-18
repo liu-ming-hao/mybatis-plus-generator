@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhengqing.aigou.mapper.HolderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhengqing.aigou.domain.Holder">
+        <id column="ID" property="id" />
+        <result column="NAME" property="name" />
+        <result column="SEX" property="sex" />
+        <result column="ID_TYPE" property="idType" />
+        <result column="ID_CARD" property="idCard" />
+        <result column="PHONE" property="phone" />
+        <result column="BIRTHDAY" property="birthday" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="UPDATE_TIME" property="updateTime" />
+        <result column="DELETE_FLAG" property="deleteFlag" />
+        <result column="VERSION" property="version" />
+        <result column="ID_EXP_DATE" property="idExpDate" />
+        <result column="EMAIL" property="email" />
+        <result column="ADDRESS" property="address" />
+        <result column="PROVINCE_CODE" property="provinceCode" />
+        <result column="PROVINCE_NAME" property="provinceName" />
+        <result column="CITY_CODE" property="cityCode" />
+        <result column="CITY_NAME" property="cityName" />
+        <result column="REGION_CODE" property="regionCode" />
+        <result column="REGION_NAME" property="regionName" />
+        <result column="JOB_CODE" property="jobCode" />
+        <result column="JOB_NAME" property="jobName" />
+        <result column="ID_TYPE_NAME" property="idTypeName" />
+    </resultMap>
+
+</mapper>
