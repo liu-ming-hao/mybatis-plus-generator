@@ -15,7 +15,7 @@ public class GenteratorCode {
 
     public static void main(String[] args) throws InterruptedException {
 
-        String []  tables = new String[]{"ORDER_WZ_PAYMENT"};
+        String []  tables = new String[]{"USER"};
 
 
         //用来获取Mybatis-Plus.properties文件的配置信息
