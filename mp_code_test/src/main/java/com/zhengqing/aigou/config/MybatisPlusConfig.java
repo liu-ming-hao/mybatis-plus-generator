@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //Spring boot方式
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.zhengqing.aigou.mapper")
+@MapperScan("com.zhengqing.aigou.dao")
 public class MybatisPlusConfig {
     @Bean  //分页插件
     public PaginationInterceptor paginationInterceptor() {

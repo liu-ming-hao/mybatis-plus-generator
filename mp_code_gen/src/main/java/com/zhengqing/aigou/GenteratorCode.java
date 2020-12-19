@@ -31,6 +31,7 @@ public class GenteratorCode {
         gc.setBaseColumnList(true);// XML columList
         gc.setAuthor(rb.getString("author"));
         gc.setSwagger2(true);//model 生成字段说明注解
+        gc.setMapperName("%sDao");//文件名设置
         mpg.setGlobalConfig(gc);
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
