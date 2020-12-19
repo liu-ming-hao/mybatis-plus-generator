@@ -2,7 +2,6 @@ package ${package.Controller};
 
 import ${package.Entity}.${entity};//dao
 import ${package.Service}.${table.serviceName};//service
-import ${package.ServiceImpl}.${table.serviceImplName};//impl
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +46,7 @@ public class ${table.controllerName} {
     @PostMapping("/findList")
     public List<${entity}> findList(@RequestBody ${entity} reqModel){
         List<${entity}> listRes = thisService.findList(reqModel);
-        return orderHolderList;
+        return listRes;
     }
     @PostMapping("/insert")
     public void insert(@RequestBody ${entity} reqModel){
