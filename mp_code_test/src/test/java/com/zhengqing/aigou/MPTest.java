@@ -2,6 +2,10 @@ package com.zhengqing.aigou;
 
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zhengqing.aigou.dao.OrderHolderMapper;
 import com.zhengqing.aigou.model.OrderHolder;
 import com.zhengqing.aigou.model.User;
 import com.zhengqing.aigou.service.IOrderHolderService;
@@ -23,6 +27,9 @@ public class MPTest {
 
     @Autowired
     private IOrderHolderService iOrderHolderService;
+
+    @Autowired
+    private OrderHolderMapper orderHolderMapper;
 
     @Test
     public void testAdd() throws Exception {
@@ -70,6 +77,10 @@ public class MPTest {
 
     @Test //高级查询
     public void testQueryAndPage() throws Exception {
+        Page<OrderHolder> pagereq = new Page<>(1,2,false);
+        IPage<OrderHolder> dfasdff = orderHolderMapper.selectPage(pagereq,new QueryWrapper<>());
+
+
         /*Page<User> page = new Page<>(1, 10); //参数1：当前页  参数2：每页显示多少条数据
         Wrapper wrapper = new EntityWrapper();
         wrapper.like("name", "z");

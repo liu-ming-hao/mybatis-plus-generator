@@ -15,11 +15,11 @@ public class GenteratorCode {
 
     public static void main(String[] args) throws InterruptedException {
 
-        String []  tables = new String[]{"USER"};
+        String []  tables = new String[]{"A_USER"};
 
 
         //用来获取Mybatis-Plus.properties文件的配置信息
-        final ResourceBundle rb = ResourceBundle.getBundle("gen-company");
+        final ResourceBundle rb = ResourceBundle.getBundle("spring-cloud-demo-gen");
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
@@ -44,10 +44,11 @@ public class GenteratorCode {
         mpg.setDataSource(dsc);
         // ********策略配置******
         StrategyConfig strategy = new StrategyConfig();
-        //strategy.setTablePrefix(new String[] { "ORDER_" });// 表前缀忽略
+        strategy.setTablePrefix(new String[] { "A_" });// 表前缀忽略
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略  驼峰
         strategy.setInclude(tables); //需要生成的表
         strategy.setEntityLombokModel(true); //使用lombok插件 不生成getter seter
+        strategy.setRestControllerStyle(true);
         mpg.setStrategy(strategy);
         // 包配置
         PackageConfig pc = new PackageConfig();
