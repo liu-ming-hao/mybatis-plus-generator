@@ -1,17 +1,7 @@
-
 spring:
   application:
     name: mct
-  datasource:
-    driver-class-name: oracle.jdbc.OracleDriver
-    #url: jdbc:oracle:thin:@192.168.85.49:1521:xe
-    #username: m_order
-    #password: 123456
-    url: jdbc:oracle:thin:@localhost:1521:orcl
-    username: cld
-    password: 123456
-mybatis-plus:
-  mapper-locations: classpath:mapper/*Mapper.xml
-  type-aliases-package: com.zhengqing.aigou.model
+  profiles:
+    active: company  #选择加载不同环境的yml文件
 server:
   port: 8686

@@ -19,7 +19,7 @@ public class GenteratorCode {
 
 
         //用来获取Mybatis-Plus.properties文件的配置信息
-        final ResourceBundle rb = ResourceBundle.getBundle("gen");
+        final ResourceBundle rb = ResourceBundle.getBundle("gen-company");
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
