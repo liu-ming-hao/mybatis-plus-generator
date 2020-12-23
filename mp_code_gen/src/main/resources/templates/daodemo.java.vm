@@ -19,6 +19,6 @@ interface ${table.mapperName} : ${superMapperClass}<${entity}>
 #else
 @Repository
 public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
-            public List<${entity}> findList(${entity} reqModel);
+            //public List<${entity}> findList(${entity} reqModel);
         }
 #end

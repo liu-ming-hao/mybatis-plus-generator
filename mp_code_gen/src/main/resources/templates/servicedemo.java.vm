@@ -2,6 +2,7 @@ package ${package.Service};
 
 import ${package.Entity}.${entity};
 import ${superServiceClassPackage};
+import com.de.publicpackage.page.PageRes;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ interface ${table.serviceName} : ${superServiceClass}<${entity}>
 #else
 public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
     public List<${entity}> findList(${entity} reqModel);
+    public PageRes selectPage(${entity} reqModel);
     public void insert(${entity} reqModel);
     public boolean updateById(${entity} reqModel);
     public void deleteById(String id);

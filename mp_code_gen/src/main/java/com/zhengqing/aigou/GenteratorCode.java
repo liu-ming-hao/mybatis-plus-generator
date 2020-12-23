@@ -53,7 +53,7 @@ public class GenteratorCode {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent(rb.getString("parent"));
-        pc.setController("controller");
+        pc.setController("web");
         pc.setService("service");
         pc.setServiceImpl("service.impl");
         pc.setEntity("model");

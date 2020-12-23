@@ -2,7 +2,9 @@ package com.zhengqing.aigou;
 
 
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zhengqing.aigou.dao.OrderHolderMapper;
@@ -50,7 +52,7 @@ public class MPTest {
     public void findList() throws Exception {
         //userService.deleteById(1L);
         OrderHolder orderHolder = new OrderHolder();
-        List<OrderHolder> orderHolderList = iOrderHolderService.findList(orderHolder);
+        List<OrderHolder> orderHolderList = orderHolderMapper.selectList(new QueryWrapper<OrderHolder>());
         System.out.println(orderHolderList.size());
     }
 
@@ -78,8 +80,8 @@ public class MPTest {
     @Test //高级查询
     public void testQueryAndPage() throws Exception {
         Page<OrderHolder> pagereq = new Page<>(1,2,false);
-        IPage<OrderHolder> dfasdff = orderHolderMapper.selectPage(pagereq,new QueryWrapper<>());
-
+        IPage<OrderHolder> dfasdff = orderHolderMapper.selectPage(pagereq,new QueryWrapper<OrderHolder>());
+        System.out.println();
 
         /*Page<User> page = new Page<>(1, 10); //参数1：当前页  参数2：每页显示多少条数据
         Wrapper wrapper = new EntityWrapper();

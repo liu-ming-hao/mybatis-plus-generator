@@ -6,6 +6,10 @@ import ${package.Service}.${table.serviceName};
 import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.de.publicpackage.page.PageRes;
 
 import java.util.List;
 
@@ -26,10 +30,17 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
     @Autowired
     ${table.mapperName}  thisMapper;
+
     @Override
     public List<${entity}> findList(${entity} reqModel){
-        List<${entity}> listRes = thisMapper.findList(reqModel);
+        List<${entity}> listRes = thisMapper.selectList(new QueryWrapper<${entity}>(reqModel));;
         return listRes;
+    }
+    @Override
+    public PageRes selectPage(${entity} reqModel) {
+        Page<${entity}> pageset = new Page<>(5,10);
+        IPage<${entity}> selectPageRes = thisMapper.selectPage(pageset,new QueryWrapper<${entity}>(reqModel));
+        return new PageRes(selectPageRes.getTotal(),5,10,selectPageRes.getRecords());
     }
     @Override
     public void insert(${entity} reqModel){

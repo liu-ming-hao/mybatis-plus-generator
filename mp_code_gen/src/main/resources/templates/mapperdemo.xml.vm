@@ -49,11 +49,11 @@
             </where>
     </sql>
 
-    <!-- 通用查询方法 -->
+    <!-- 通用查询方法
     <select id="findList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM ${table.name}
         <include refid="dynamicWhere" />
     </select>
-
+     -->
 </mapper>

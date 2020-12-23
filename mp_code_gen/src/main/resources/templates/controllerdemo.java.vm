@@ -3,6 +3,9 @@ package ${package.Controller};
 import ${package.Entity}.${entity};//dao
 import ${package.Service}.${table.serviceName};//service
 
+import com.de.publicpackage.page.PageRes;
+import com.de.publicpackage.result.CodeMsg;
+import com.de.publicpackage.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,26 +46,58 @@ public class ${table.controllerName} {
     @Autowired
     private ${table.serviceName} thisService;
 
-    @PostMapping("/findList")
-    public List<${entity}> findList(@RequestBody ${entity} reqModel){
-        List<${entity}> listRes = thisService.findList(reqModel);
-        return listRes;
+    @PostMapping("/selectList")
+    public Result<List<${entity}>> selectList(@RequestBody ${entity} reqModel){
+        try{
+            List<${entity}> listRes = thisService.selectList(reqModel);
+            return Result.success(listRes);
+        }catch (Exception e){
+            log.error(e.getMessage());
+            return Result.error(new CodeMsg(-1,"模板默认返回"));
+        }
     }
+    @PostMapping("/selectPage")
+    public Result<PageRes> selectPage(@RequestBody ${entity} reqModel){
+        try{
+            PageRes listRes = thisService.selectPage(reqModel);
+            return Result.success(listRes);
+        }catch (Exception e){
+            log.error(e.getMessage());
+            return Result.error(new CodeMsg(-1,"模板默认返回"));;
+        }
+    };
     @PostMapping("/insert")
     public void insert(@RequestBody ${entity} reqModel){
-        thisService.insert(reqModel);
+        try{
+            thisService.insert(reqModel);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
     }
     @PostMapping("/updateById")
     public void updateById(@RequestBody ${entity} reqModel){
-        thisService.updateById(reqModel);
+        try{
+            thisService.updateById(reqModel);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
     }
     @PostMapping("/deleteById")
     public void deleteById(@RequestParam("id") String id){
-        thisService.deleteById(id);
+        try{
+            thisService.deleteById(id);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
     }
     @GetMapping("/getById")
     public ${entity} getById(@RequestParam("id") String id){
-        return thisService.getById(id);
+        try{
+            return thisService.getById(id);
+        }catch (Exception e){
+            log.error(e.getMessage());
+            return null;
+        }
     }
 }
 
