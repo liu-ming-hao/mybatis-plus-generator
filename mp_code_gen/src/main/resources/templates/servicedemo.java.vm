@@ -18,7 +18,7 @@ import java.util.List;
 interface ${table.serviceName} : ${superServiceClass}<${entity}>
 #else
 public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
-    public List<${entity}> findList(${entity} reqModel);
+    public List<${entity}> selectList(${entity} reqModel);
     public PageRes selectPage(${entity} reqModel);
     public void insert(${entity} reqModel);
     public boolean updateById(${entity} reqModel);

@@ -32,7 +32,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     ${table.mapperName}  thisMapper;
 
     @Override
-    public List<${entity}> findList(${entity} reqModel){
+    public List<${entity}> selectList(${entity} reqModel){
         List<${entity}> listRes = thisMapper.selectList(new QueryWrapper<${entity}>(reqModel));;
         return listRes;
     }

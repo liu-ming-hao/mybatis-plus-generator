@@ -28,6 +28,7 @@ import java.util.List;
  * @author ${author}
  * @since ${date}
  */
+@Slf4j
 #if(${restControllerStyle})
 @RestController
 #else
@@ -63,7 +64,7 @@ public class ${table.controllerName} {
             return Result.success(listRes);
         }catch (Exception e){
             log.error(e.getMessage());
-            return Result.error(new CodeMsg(-1,"模板默认返回"));;
+            return Result.error(new CodeMsg(-1,"模板默认返回"));
         }
     };
     @PostMapping("/insert")
